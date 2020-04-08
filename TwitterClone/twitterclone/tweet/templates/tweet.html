@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_anonymous %}
+<p>IDK, something</p>
+{% else %}
+
+<div class="row">
+  {% include "sidebarMain.html" %}
+  {% endif %}
+
+  <section class='col'>
+    <h1>hello from tweet.html</h1>
+    <hr>
+    <p>
+      {{ tweet.twitter_user }}
+
+      {% if request.user.is_anonymous %}
+      <p>-- @{{tweet.twitter_user.display_name}}</p>
+
+      {% else %}
+      <a href="{% url 'profile' tweet.twitter_user %}">
+        -- @{{tweet.twitter_user.display_name}}
+      </a>
+      {%endif%}
+
+    </p>
+    <small>{{ tweet.time_posted }}</small>
+    <br>
+    <p>{{tweet.body}}</p>
+    <br>
+  </section>
+</div>
+{% endblock %}

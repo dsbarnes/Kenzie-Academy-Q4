@@ -1,0 +1,8 @@
+.idea/*
+.venv/*
+.vscode/*
+__pycache__/*
+
+data/*
+mapping.json
+controller_answer.py

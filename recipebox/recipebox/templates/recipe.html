@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><strong>Title: </strong>{{recipes.title}}</p>
+    <strong>Author: </strong><a href="/author/{{recipes.author.id}}">{{recipes.author}}</a>
+    <p><strong>Description: </strong>{{recipes.description}}</p>
+    <p><strong>Time Required: </strong>{{recipes.time_required}}</p>
+    <p><strong>Instructions: </strong>{{recipes.instructions}}</p>
+
+    <!-- If the user is an admin, or is the user this recipe belongs to -->
+    <!-- { if request.user.is_staff or request.user == recipes.author } -->
+    {% if request.user.is_staff or is_mine %}
+    <a href="{% url 'edit' recipes.id %}">Edit Recipe</a>
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'add_favorite' recipes.id %}">Favorite Recipe</a>
+    {% endif %}
+</body>
+
+</html>

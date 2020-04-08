@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <h1>Hello from history</h1>
+  <p><a href="{% url 'home' %}">back home</a></p>
+
+  {% for shit in cow_shit %}
+  <p>{{ shit.cow_says }}</p>
+  {% endfor %}
+
+</body>
+
+</html>

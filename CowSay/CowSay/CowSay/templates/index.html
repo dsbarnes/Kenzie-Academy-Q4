@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<body>
+  <h1>Hello from index.html</h1>
+  <p><a href="{% url 'history' %}">See last ten moo moos</a></p>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+
+  <div>
+    {% for cow in  cow_says %}
+    <p>{{ cow.cow_says }}</p>
+    {% endfor %}
+  </div>
+
+</body>
+
+</html>

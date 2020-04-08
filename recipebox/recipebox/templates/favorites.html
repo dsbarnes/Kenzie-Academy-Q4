@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>Favorite recipes for: {{ request.user }}</p>
+
+  {% for fav in favorites %}
+  <p><strong>Title: </strong>{{ fav.title }}</p>
+  <p><strong>Author: </strong>{{ fav.author }}</p>
+  <p><strong>Description: </strong>{{ fav.description }}</p>
+  <p><strong>Time Required: </strong>{{ fav.time_required }}</p>
+  <p><strong>Instructions: </strong>{{ fav.instructions }}</p>
+  {% endfor %}
+
+</body>
+
+</html>

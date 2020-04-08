@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='row'>
+  {% include "sidebarMain.html" %}
+
+  <section class='col'>
+    <h1>Hello, {{ request.user.username}}</h1>
+    <hr>
+    <br>
+
+    {% for tweet in tweets %}
+    <div class="card mt-3 mb-3">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="{% url 'profile' tweet.twitter_user %}">@{{tweet.twitter_user}}</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ tweet.time_posted }}</h6>
+        <a href="{% url 'single_tweet' tweet.id %}">View Tweet</a>
+        <p class="card-text">{{tweet.body}}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+  </section>
+</div>
+{% endblock %}

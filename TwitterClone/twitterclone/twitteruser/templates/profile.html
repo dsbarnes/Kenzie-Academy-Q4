@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  {% if not_me %}
+  {% include "sidebarAlt.html" %}
+  {% else %}
+  {% include "sidebarMain.html" %}
+  {% endif %}
+
+
+  <section class='col'>
+    <h1>{{profile.username}}</h1>
+    <hr>
+    <p>--@{{profile.display_name}}</p>
+  </section>
+</div>
+{% endblock %}

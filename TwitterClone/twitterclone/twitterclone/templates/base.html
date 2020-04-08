@@ -1,0 +1,41 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Boo Hiss!!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class='container'>
+    <div class='row pt-4'>
+      {% if request.user.is_anonymous %}
+      <div class='col' style="color:firebrick; text-align:center">You must log in to use the menu items</div>
+      {% else %}
+      <div class='col-sm m-3'><a href="{% url 'home' %}"> Home </a></div>
+      <div class='col-sm m-3'><a href="{% url 'write_tweet' %}"> Tweet </a></div>
+      <div class='col-sm m-3'><a href="{% url 'notificatons' %}"> Notifications
+          <span class='text-danger'>{{notification_count}}<span>
+        </a></div>
+      <div class='col-sm m-3'><a href="{% url 'profile' request.user.username %}"> Profile </a></div>
+    </div>
+    {% endif %}
+  </div>
+
+  <hr />
+
+  <div class='container'>
+    <!-- Basically, if your profile, sidebar, else alt -->
+    {% block content %}
+    {% endblock %}
+  </div>
+  </div>
+</body>
+
+
+</html>

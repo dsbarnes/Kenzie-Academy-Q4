@@ -1,0 +1,51 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/6ffdd48/
+ALLOWED_HOSTS	custom_user/custom_user/settings.py	/^ALLOWED_HOSTS = ['*']$/;"	v
+AUTH_PASSWORD_VALIDATORS	custom_user/custom_user/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	v
+AUTH_USER_MODEL	custom_user/custom_user/settings.py	/^AUTH_USER_MODEL = 'myUsers.Custom_User'$/;"	v
+BASE_DIR	custom_user/custom_user/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	v
+Custom_User	custom_user/myUsers/models.py	/^class Custom_User(AbstractUser):$/;"	c
+DATABASES	custom_user/custom_user/settings.py	/^DATABASES = {$/;"	v
+DEBUG	custom_user/custom_user/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	custom_user/custom_user/settings.py	/^INSTALLED_APPS = [$/;"	v
+LANGUAGE_CODE	custom_user/custom_user/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+Login_Form	custom_user/custom_user/forms.py	/^class Login_Form(forms.Form):$/;"	c
+MIDDLEWARE	custom_user/custom_user/settings.py	/^MIDDLEWARE = [$/;"	v
+Meta	custom_user/myUsers/admin.py	/^    class Meta(UserChangeForm.Meta):$/;"	c	class:MyUserChangeForm
+MyUserAdmin	custom_user/myUsers/admin.py	/^class MyUserAdmin(UserAdmin):$/;"	c
+MyUserChangeForm	custom_user/myUsers/admin.py	/^class MyUserChangeForm(UserChangeForm):$/;"	c
+ROOT_URLCONF	custom_user/custom_user/settings.py	/^ROOT_URLCONF = 'custom_user.urls'$/;"	v
+SECRET_KEY	custom_user/custom_user/settings.py	/^SECRET_KEY = '@um-dvlk&5wh$1m@$d7@*q0av7yt7(xkd#!ysas^8y_#%dg+a-'$/;"	v
+STATIC_URL	custom_user/custom_user/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+Signup_Form	custom_user/custom_user/forms.py	/^class Signup_Form(forms.Form):$/;"	c
+TEMPLATES	custom_user/custom_user/settings.py	/^TEMPLATES = [$/;"	v
+TIME_ZONE	custom_user/custom_user/settings.py	/^TIME_ZONE = 'UTC'$/;"	v
+USE_I18N	custom_user/custom_user/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	custom_user/custom_user/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	custom_user/custom_user/settings.py	/^USE_TZ = True$/;"	v
+UsersConfig	custom_user/myUsers/apps.py	/^class UsersConfig(AppConfig):$/;"	c
+WSGI_APPLICATION	custom_user/custom_user/settings.py	/^WSGI_APPLICATION = 'custom_user.wsgi.application'$/;"	v
+age	custom_user/myUsers/models.py	/^    age = models.IntegerField(blank=True, null=True)$/;"	v	class:Custom_User
+application	custom_user/custom_user/asgi.py	/^application = get_asgi_application()$/;"	v
+application	custom_user/custom_user/wsgi.py	/^application = get_wsgi_application()$/;"	v
+display_name	custom_user/custom_user/forms.py	/^    display_name = forms.CharField(max_length=50)$/;"	v	class:Login_Form
+display_name	custom_user/custom_user/forms.py	/^    display_name = forms.CharField(max_length=50)$/;"	v	class:Signup_Form
+display_name	custom_user/myUsers/models.py	/^    display_name = models.CharField(max_length=80)$/;"	v	class:Custom_User
+fieldsets	custom_user/myUsers/admin.py	/^    fieldsets = UserAdmin.fieldsets + ($/;"	v	class:MyUserAdmin
+form	custom_user/myUsers/admin.py	/^    form = MyUserChangeForm$/;"	v	class:MyUserAdmin
+homepage	custom_user/myUsers/models.py	/^    homepage = models.URLField(blank=True, null=True)$/;"	v	class:Custom_User
+index	custom_user/custom_user/views.py	/^def index(request):$/;"	f
+login	custom_user/custom_user/views.py	/^def login(request):$/;"	f
+main	custom_user/manage.py	/^def main():$/;"	f
+model	custom_user/myUsers/admin.py	/^        model = CustomUser$/;"	v	class:MyUserChangeForm.Meta
+name	custom_user/myUsers/apps.py	/^    name = 'myUsers'$/;"	v	class:UsersConfig
+password	custom_user/custom_user/forms.py	/^    password = forms.CharField(max_length=50)$/;"	v	class:Login_Form
+password	custom_user/custom_user/forms.py	/^    password = forms.CharField(max_length=50)$/;"	v	class:Signup_Form
+signup	custom_user/custom_user/views.py	/^def signup(request):$/;"	f
+urlpatterns	custom_user/custom_user/urls.py	/^urlpatterns = [$/;"	v

@@ -1,0 +1,21 @@
+<aside class='col-4 mt-3'>
+  <div class='bg-light w-100'>
+
+    <p class='pl-2 pt-2 mb-0 pb-0'>Logged In As:</p>
+    <div class='mb-3'>
+      {% if request.user.is_anonymous %}
+      <p class='pl-2' style="color:firebrick">You are not logged in</p>
+      {% else %}
+      <span class='pl-2'>{{ request.user }}</span>
+      <a class='pl-2' href="{% url 'profile' request.user.username %}"> @{{ request.user.display_name }}</a>
+      {% endif %}
+    </div>
+    <br>
+
+    <p class='pl-2 pb-0 mb-0'>Total Tweets: {{ total_tweets }}</p>
+    <p class='pl-2'>Following {{ total_following }} users</p>
+    <br>
+
+  </div>
+  <div class='btn btn-danger mt-5 w-100'><a class='text-white' href="{% url 'logout_user' %}"> Logout </a></div>
+</aside>

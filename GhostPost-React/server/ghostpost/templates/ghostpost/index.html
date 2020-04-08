@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GhostPost</title>
+</head>
+<body>
+    <p><a href='{% url 'add_post' %}'>Add a post!</a></p>
+
+    <p>Filter Posts By:</p>
+    <a href='/most_recent'>Most Recent</a>
+    <a href='/boasts'>Boasts Only</a>
+    <a href='/roasts'>Roasts Only</a>
+    
+    <p>Sort Posts By: </p>
+    <a href='/up_votes_ascending'>Up Votes Ascending</a>
+    <a href='/up_votes_descending'>Up Votes Descending</a>
+    <a href='/down_votes_ascending'>Down Votes Ascending</a>
+    <a href='/down_votes_descending'>Down Votes Descending</a>
+
+    <hr />
+    {% for post in posts %}
+    <p>BOASTIN: {{ post.is_boast }} </p>
+    <p>{{ post.contents }} </p>
+    <p>UP: {{ post.up_votes }} </p>
+    <p>DOWN: {{ post.down_votes }} </p>
+    <p>TIME: {{ post.submission_time }} </p>    
+    <a href="/upvote/{{ post.pk }}">Up Vote</a>
+    <a href="/downvote/{{ post.pk }}">Down Vote</a>
+    {% endfor %}
+
+</body>
+</html>
