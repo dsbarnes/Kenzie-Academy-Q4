@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    h1 {
+        text-align: center;
+        margin: 42px 0px 42px 0px;
+    }
+
+    div.container {
+        margin: 0px auto 0px auto;
+    }
+</style>
+
+<h1>About Company</h1>
+<hr />
+<div class='container w-50'>
+    <p>Some shit bout the company</p>
+    <br />
+    <p>CEO</p>
+    <p>Industry</p>
+    <p>HQ</p>
+    <br />
+    <p>Details</p>
+    <p>Share price</p>
+    <p>Co Value</p>
+    <p><a href="{% url 'buy' 'AAPL' %}">Buy</a></p>
+</div>
+{% endblock %}

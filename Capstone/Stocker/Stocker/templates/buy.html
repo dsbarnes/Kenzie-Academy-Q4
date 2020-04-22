@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    h1,
+    h3 {
+        text-align: center;
+        margin: 42px 0px 42px 0px;
+    }
+
+    #center {
+        text-align: center;
+    }
+
+    button {
+        border-radius: 30px;
+        margin: 8px;
+    }
+</style>
+<br>
+<div class="card bg-light m-auto" style="padding: 2rem;">
+<h1>{{ data.companyName}}</h1>
+<p id='center'>{{data.symbol}}</p>
+<hr />
+<h1>
+    $ {{ data.latestPrice }}
+
+</h1>
+<h2 id="center">
+    % {{data.change}}
+    {% if 0 > data.changePercent %}
+    <i class="fa fa-arrow-down fa-md" style="color: salmon;"></i>
+    {% else %}
+    <i class="fa fa-arrow-up fa-md" style="color: turquoise;"></i>
+    {% endif %}
+</h2>
+<hr/>
+<h3>Shares to Buy</h3>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+            <a class="btn btn-primary" href="{% url 'finalize' data.symbol 5%}" role="button">5</a>
+            <a class="btn btn-primary" href="{% url 'finalize' data.symbol 10%}" role="button">10</a>
+            <a class="btn btn-primary" href="{% url 'finalize' data.symbol 20%}" role="button">20</a>
+            <a class="btn btn-primary" href="{% url 'finalize' data.symbol 50%}" role="button">50</a>
+            <a class="btn btn-primary" href="{% url 'finalize' data.symbol 100%}" role="button">100</a>
+            <a class="btn btn-primary" href="#" role="button">...</a>
+
+        </div>
+        <br>
+        <p id='center'><a class="btn btn-primary" href="{% url 'sell' data.symbol %}" role="button">Or Sell!</a></p>
+    </div>
+</div>
+
+{% endblock %}

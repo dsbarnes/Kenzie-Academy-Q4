@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    h1,
+    h3 {
+        text-align: center;
+        margin: 42px 0px 42px 0px;
+    }
+
+    button {
+        border-radius: 30px;
+        margin: 8px;
+    }
+</style>
+
+<h1>{{ data.companyName}}</h1>
+{{data.symbol}}
+<hr />
+
+<h3>Shares to Sell</h3>
+<h1>$ {{ data.latestPrice }}</h1>
+<div class="container w-50 ml-auto mr-auto">
+
+    <div class="row">
+        <a class='col' href="{% url 'finalsell' data.symbol 5 %}">5</a>
+        <a clss='col' href="{% url 'finalsell' data.symbol  10%}">10</a>
+        <a clss='col' href="{% url 'finalsell' data.symbol 20 %}">20</a>
+    </div>
+
+    <div class="row">
+        <a class='col' href="{% url 'finalsell' data.symbol 50 %}">50</a>
+        <a clss='col' href="{% url 'finalsell' data.symbol 100 %}">100</a>
+        <a clss='col' href="#">...</a>
+    </div>
+
+</div>
+
+{% endblock %}

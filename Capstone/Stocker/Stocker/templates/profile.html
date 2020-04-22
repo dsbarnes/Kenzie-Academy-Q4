@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<style>
+    h1,
+    h3 {
+        text-align: center;
+        margin: 42px 0px 42px 0px;
+    }
+
+    form li,
+    form label {
+        display: none;
+    }
+
+    form {
+        width: 50%;
+        margin: 0px auto 84px auto;
+    }
+
+    form input {
+        width: 49%;
+        margin: 0px auto 0px auto;
+        border-radius: 30px;
+    }
+
+    div#personal {
+        text-align: center;
+        width: 50%;
+    }
+</style>
+<br>
+<div class="card bg-light m-auto" style="padding-left: 4rem; padding-right: 4rem;">
+<h1>{{request.user}}'s Profile</h1>
+
+
+<div class='container' style="padding-bottom: 0;"></div>
+    <hr />
+    <h3>Personal Details</h3>
+    <hr />
+
+        <div class='row'>
+            <p class='col'>email</p>
+            <p class='col'>{{ user.email}}</p>
+        </div>
+
+        <div class='row'>
+            <p class='col'>first name</p>
+            <p class='col'>{{ user.first_name}}</p>
+        </div>
+
+        <div class='row'>
+            <p class='col'>last name</p>
+            <p class='col'>{{ user.last_name}}</p>
+        </div>
+
+        <div class='row'>
+            <p class='col'>total deposits</p>
+            <p class='col'>{{ user.deposits }}</p>
+        </div>
+
+
+        <hr />
+        <h3>Deposit / Withdraw</h3>
+        <hr />
+        <form action='' method='post' style="right: 30px;">
+            {% csrf_token %}
+            {{ deposit_form }}
+            <input type='submit' value="Deposit" />
+        </form>
+    </div>
+    {% endblock %}

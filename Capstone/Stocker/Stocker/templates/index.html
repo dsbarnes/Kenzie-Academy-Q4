@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    div.row {
+        text-align: center;
+    }
+
+    form li {
+        display: none;
+    }
+
+    form {
+        width: 50%;
+        margin: 42px auto 0px auto;
+    }
+
+    form label {
+        display: none;
+    }
+
+    form input {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    form button {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    div#portfolio h1 {
+        margin: 42px 0px 42px 0px;
+    }
+
+    div#portfolio {
+        margin-top: 84px;
+        text-align: center;
+    }
+
+    div#following h1 {
+        margin: 42px 0px 42px 0px;
+    }
+
+    div#following {
+        margin-top: 84px;
+        text-align: center;
+    }
+
+    div#followingList {
+        margin: 42px 0px 125px 0px;
+    }
+
+    div#detailShort {
+        border: 1px solid silver;
+        border-radius: 30px;
+        padding: 15px 0px 0px 0px;
+        margin: 8px 0px 8px 0px;
+        background-color: white;
+    }
+
+    div#searchData {
+        border: 1px solid silver;
+        border-radius: 30px;
+        margin: 42px auto 0px auto;
+        width: 70%;
+        padding: 15px 0px 0px 0px;
+    }
+
+    div#searchDataButtons {
+        width: 30%;
+        margin: 10px auto 0px auto;
+    }
+
+    div#detailLong {
+        border: 1px solid orange;
+        border-radius: 30px;
+        padding: 0px 20px 0px 20px;
+        text-align: center;
+        background-color: white;
+    }
+
+    div#detailLong h3.row {
+        margin: 42px auto 42px auto;
+    }
+
+    div#detailLong p {
+        text-align: left;
+    }
+
+    div#detailLong b {
+        text-align: right;
+    }
+</style>
+
+<div>
+        <div class="container mt-6">
+    <br/>
+    <br>
+    <div class="card bg-light m-auto" style="padding-left: 4rem; padding-right: 4rem; padding-bottom: 2rem;">
+        <br>
+            <h1>Search</h1>
+            <hr>
+            <form action='' method='post'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button href="{% url 'index' %}">Search</button>
+                </form>
+    </div>
+   <br>
+</div>
+    <div class="container mt-6">
+            
+            <div class="card bg-light m-auto" style="padding-left: 4rem; padding-right: 4rem; padding-bottom: 2rem;">
+                    <br>
+                    <h1>Balance</h1>
+                    <hr>
+            <h2 class="col-sm">
+                $ {{ balance }}
+            </h2>
+        </div>
+    </div>
+
+    {% if data %}
+    <br>
+    <div class="card bg-light m-auto" style="width: 18rem;">
+        <div class='card-title'>
+            <!-- <p class='col'>{{ data.symbol }}</p> -->
+            <h3 class='col' style="padding-top: 2rem;">{{ data.companyName }}</h3>
+            <h5 class="card-subtitle mb-2 text-muted">{{ data.symbol }}</h6>
+            <p class='col'>${{ data.latestPrice }}</p>
+            <p class='col'>{{ data.changePercent }}
+                {% if 0 > data.changePercent %}
+                <i class="fa fa-arrow-down fa-md" style="color: salmon;"></i>
+                {% else %}
+                <i class="fa fa-arrow-up fa-md" style="color: turquoise;"></i>
+                {% endif %}
+            </p>
+        </div>
+        <div class='card-body'>
+            <div class='btn-group'>
+            <p class='col'><a class="btn btn-primary" href="{% url 'favorite' data.symbol %}">Follow</a></p>
+            <p class='col'><a class="btn btn-primary" href="{% url 'buy' data.symbol %}">Buy</a></p>
+            <p class='col'><a class="btn btn-primary" href="{% url 'sell' data.symbol %}">Sell</a></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+<div class='container' id='portfolio'>
+    <hr />
+    <div class="card bg-light m-auto" style="padding-left: 4rem; padding-right: 4rem; padding-bottom: 2rem;">
+    <h1>Portfolio</h1>
+    <hr>
+    
+    
+
+    <p>{{ something }}</p>
+    {% for holding in portfolio %}
+    <div class='row' id='detailShort'>
+        <p class='col'>{{holding.stock}}</p>
+        <p class='col'>{{holding.count}}</p>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+
+<div class='container' id='following'>
+    <hr />
+    <div class="card bg-light m-auto" style="padding-left: 4rem; padding-right: 4rem; padding-bottom: 2rem;">
+    <h1>Following</h1>
+    <hr />
+    <div id='followingList'>
+
+        {% for tkr in following %}
+        <div class='row' id='detailShort'>
+            <p class='col'>
+                <a href="{% url 'buy' tkr.symbol %}">
+                    <b>{{tkr.symbol}}</b>
+                </a>
+            </p>
+            <p class='col'>{{tkr.company}}</p>
+            <p class='col'>$ {{tkr.price}}</p>
+            <p class='col'>{{tkr.change}} %
+                    {% if 0 > tkr.change %}
+                    <i class="fa fa-arrow-down fa-md" style="color: salmon;"></i>
+                    {% else %}
+                    <i class="fa fa-arrow-up fa-md" style="color: turquoise;"></i>
+                    {% endif %}
+            </p>
+        </div>
+
+        <div id='detailLong' data-tkr=`{trk.company}`>
+            {% for co in company %}
+            {% if tkr.symbol == co.symbol %}
+
+            <h3 class='row'>About</h3>
+
+            <!-- <div class='row'> -->
+            <b class='row'>CO. Description: </b>
+            <br />
+            <p class='row'>{{co.description}}</p>
+            <!-- </div> -->
+
+            <div class='row'>
+                <b class='col'>CEO: </b>
+                <p class='col'>{{co.CEO}}</p>
+            </div>
+
+            <div class='row'>
+                <b class='col'>Industry: </b>
+                <p class='col'>{{co.industry}}</p>
+            </div>
+
+            <div class='row'>
+                <b class='col'>Website: </b>
+                <p class='col'>{{co.website}}</p>
+            </div>
+
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+<script>
+    const handleClick = (ev) => {
+        console.log(ev.target)
+    }
+    const detail = document.getElementById('detailShort')
+    detail.addEventListener('click', (ev) => handleClick(ev))
+</script>
+
+
+{% endblock %}
